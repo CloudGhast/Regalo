@@ -8,6 +8,13 @@ public class Controller : MonoBehaviour
   public AudioClip[] musicClips;
   private int currentClipIndex = 0;
 
+  void Start()
+  {
+
+    currentClipIndex = 0;
+    musicSource.clip = musicClips[currentClipIndex];
+    musicSource.Play();
+  }
   void Update()
   {
     if (Input.GetKeyDown(KeyCode.Space))
