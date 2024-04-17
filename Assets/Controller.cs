@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    public GameObject Audiosource;
-    public GameObject Audiosource2;
-    public GameObject Audiosource3;
-    public GameObject Audiosource4;
+  public AudioSource musicSource;
+  public AudioClip[] musicClips;
+  private int currentClipIndex = 0;
 
-    private void Update() 
+  void Update()
+  {
+    if (Input.GetKeyDown(KeyCode.Space))
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("ANDA EL ESPACIO");
-        }    
+      // Update clip index
+      currentClipIndex = (currentClipIndex + 1) % musicClips.Length;
+
+      // Assign new clip and play
+      musicSource.clip = musicClips[currentClipIndex];
+      musicSource.Play();
     }
+  }
 }
